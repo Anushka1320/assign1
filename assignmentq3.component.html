@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="assignmentq3">
+<head>
+  <title>AngularJS Directives Example</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="myController">
+  <h2>Number Addition</h2>
+  <input type="number" ng-model="num1" placeholder="Enter a number">
+  <input type="number" ng-model="num2" placeholder="Enter another number">
+  <button ng-click="addNumbers()" ng-disabled="!num1 || !num2">Add</button>
+
+  <div ng-show="resultVisible">
+    <h3>Result:</h3>
+    <p ng-bind="result"></p>
+  </div>
+
+  <script>
+    angular.module('assignmentq3', [])
+      .controller('myController', ['$scope', function($scope) {
+        $scope.resultVisible = false;
+
+        $scope.addNumbers = function() {
+          $scope.result = $scope.num1 + $scope.num2;
+          $scope.resultVisible = true;
+        };
+      }]);
+  </script>
+</body>
+</html>
+
